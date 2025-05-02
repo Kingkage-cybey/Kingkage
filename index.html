@@ -8,52 +8,73 @@
 </head>
 <body class="bg-gray-100 flex justify-center items-center min-h-screen">
   <div class="bg-white p-6 rounded-xl shadow-md text-center max-w-md w-full">
-    
+
     <!-- IKLAN SLOT 1 (Atas) -->
     <div class="mb-4">
       <p class="text-xs text-gray-500 mb-1">Iklan rekomendasi:</p>
-      <script async="async" data-cfasync="false" src="//pl26530827.profitableratecpm.com/33f8d8b660985e6a443955c22f53e222/invoke.js"></script>
-<div id="container-33f8d8b660985e6a443955c22f53e222"></div>
+      <script async data-cfasync="false" src="//pl26530827.profitableratecpm.com/33f8d8b660985e6a443955c22f53e222/invoke.js"></script>
+      <div id="container-33f8d8b660985e6a443955c22f53e222"></div>
     </div>
 
     <!-- Judul dan Tombol -->
     <h1 class="text-2xl font-bold text-green-600 mb-4">DANA KAGET!</h1>
     <p class="mb-4">Klik tombol di bawah untuk klaim Dana Kaget:</p>
-    <a href="https://link.dana.id/danakaget?c=sujk4lkug&r=ktVWBv&orderId=20250501101214557515010300166273721320370" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-full">
+
+    <!-- Tombol Ambil -->
+    <button id="ambilBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-full">
       Ambil Sekarang
-    </a>
+    </button>
+
+    <!-- IKLAN DINAMIS -->
+    <div id="iklanAmbil" class="mt-4 hidden">
+      <p class="text-xs text-gray-500 mb-1">Iklan spesial buat kamu:</p>
+      <script type="text/javascript">
+        atOptions = {
+          'key': 'fb95e1d3ac3a69e4e254d0de2833ae53',
+          'format': 'iframe',
+          'height': 250,
+          'width': 300,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
+    </div>
+
     <p class="text-xs text-gray-400 mt-4">*Terbatas untuk yang cepat!</p>
 
-    <!-- IKLAN SLOT 2 (Setelah Tombol) -->
-    <div class="mt-6 text-xs text-gray-500">
-      Iklan khusus buat kamu:
-    </div>
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'fb95e1d3ac3a69e4e254d0de2833ae53',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
-
     <!-- IKLAN SLOT 3 (Bawah) -->
-    <div class="mt-8 text-xs text-gray-500">
+    <div class="mt-6 text-xs text-gray-500">
       Jangan lewatkan penawaran ini:
     </div>
     <script type="text/javascript">
       atOptions = {
-        'key' : 'fb95e1d3ac3a69e4e254d0de2833ae53',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
+        'key': 'fb95e1d3ac3a69e4e254d0de2833ae53',
+        'format': 'iframe',
+        'height': 250,
+        'width': 300,
+        'params': {}
       };
     </script>
     <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
-
   </div>
+
+  <script>
+    let klikCounter = 0;
+    const ambilBtn = document.getElementById("ambilBtn");
+    const iklanAmbil = document.getElementById("iklanAmbil");
+    let sudahDihilangkan = false;
+
+    ambilBtn.addEventListener("click", function () {
+      if (sudahDihilangkan) return;
+
+      klikCounter++;
+      if (klikCounter === 1) {
+        iklanAmbil.classList.remove("hidden");
+      } else if (klikCounter === 2) {
+        iklanAmbil.classList.add("hidden");
+        sudahDihilangkan = true;
+      }
+    });
+  </script>
 </body>
 </html>
