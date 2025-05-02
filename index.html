@@ -15,7 +15,7 @@
 
     <!-- Notifikasi Tekan -->
     <p id="notice" class="text-sm text-blue-600 font-semibold mb-2 animate-bounce">
-      Tekan tombol untuk menghilangkan iklan!
+      Tekan div iklan untuk menghilangkan iklan!
     </p>
 
     <!-- Countdown -->
@@ -24,23 +24,29 @@
     <!-- Tombol dan Iklan Overlay -->
     <div class="relative inline-block">
       <!-- Tombol Ambil -->
-      <a id="ambilBtn" href="https://link.dana.id/danakaget?c=sujk4lkug&r=ktVWBv&orderId=20250501101214557515010300166273721320370"
-         class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-full block">
+      <a id="ambilBtn" href="https://link.dana.id/danakaget?c=sudyw7xx2&r=ktVWBv&orderId=2025050210121474111501030016627372137692"
+         class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-full block relative z-0">
         Ambil Sekarang
       </a>
 
       <!-- Overlay Iklan -->
-      <div id="iklanOverlay" class="absolute inset-0 z-10 cursor-pointer">
-        <script type="text/javascript">
-          atOptions = {
-            'key': 'fb95e1d3ac3a69e4e254d0de2833ae53',
-            'format': 'iframe',
-            'height': 40,
-            'width': 220,
-            'params': {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
+      <div id="iklanContainer" class="absolute inset-0 z-20">
+        <!-- Lapisan transparan yang menangkap klik -->
+        <div id="clickLayer" class="absolute inset-0 z-30 cursor-pointer"></div>
+
+        <!-- Iklan -->
+        <div class="relative z-10">
+          <script type="text/javascript">
+            atOptions = {
+              'key': 'fb95e1d3ac3a69e4e254d0de2833ae53',
+              'format': 'iframe',
+              'height': 40,
+              'width': 220,
+              'params': {}
+            };
+          </script>
+          <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
+        </div>
       </div>
     </div>
 
@@ -66,7 +72,8 @@
   </div>
 
   <script>
-    const overlay = document.getElementById("iklanOverlay");
+    const iklanContainer = document.getElementById("iklanContainer");
+    const clickLayer = document.getElementById("clickLayer");
     const countdown = document.getElementById("countdown");
     const notice = document.getElementById("notice");
     const clickSound = document.getElementById("clickSound");
@@ -75,18 +82,16 @@
     const now = Date.now();
     const lastClose = localStorage.getItem("iklanClosedAt");
 
-    // Cek apakah perlu menampilkan iklan lagi
     let showIklan = true;
     if (lastClose && now - parseInt(lastClose) < 5000) {
       showIklan = false;
     }
 
     if (!showIklan) {
-      overlay.style.display = "none";
+      iklanContainer.style.display = "none";
       countdown.style.display = "none";
       notice.style.display = "none";
     } else {
-      // Hitung mundur 60 detik
       let timeLeft = 60;
       const timer = setInterval(() => {
         timeLeft--;
@@ -98,16 +103,16 @@
         }
       }, 1000);
 
-      overlay.addEventListener("click", () => {
+      clickLayer.addEventListener("click", () => {
         clickSound.play();
         hideIklan();
-        clearInterval(timer);
         localStorage.setItem("iklanClosedAt", Date.now());
+        clearInterval(timer);
       });
     }
 
     function hideIklan() {
-      overlay.style.display = "none";
+      iklanContainer.style.display = "none";
       countdown.style.display = "none";
       notice.style.display = "none";
     }
