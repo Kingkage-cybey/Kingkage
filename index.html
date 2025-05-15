@@ -4,57 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="0c2dedf0175eceda0e443b9cd8875ba430783d73" content="0c2dedf0175eceda0e443b9cd8875ba430783d73" />
-  <title>Dana Kaget</title>
+  <title>Dana Kaget | Klaim Sekarang</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex justify-center items-center min-h-screen">
-  <div class="bg-white p-6 rounded-xl shadow-md text-center max-w-md w-full relative">
+<body class="bg-gradient-to-br from-green-200 to-blue-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-6 rounded-xl shadow-xl max-w-md w-full text-center">
+    <h1 class="text-3xl font-bold text-green-600 mb-4">Dana Kaget Telah Tiba!</h1>
+    <p class="mb-6 text-gray-700">Klik tombol di bawah untuk klaim Dana Kaget dari saya. Jangan sampai kehabisan!</p>
 
-    <!-- Judul -->
-    <h1 class="text-2xl font-bold text-green-600 mb-2">DANA KAGET!</h1>
-    <p class="mb-2">Klik tombol di bawah untuk klaim Dana Kaget:</p>
+    <a href="https://link.dana.id/danakaget?c=sdxhgl49j&r=ktVWBv" target="_blank"
+       class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300">
+      Ambil Dana Kaget
+    </a>
 
-    <!-- Notifikasi -->
-    <p id="notice" class="text-sm text-blue-600 font-semibold mb-2 animate-bounce">
-      Kesempatan terbatas, klaim sekarang juga!
-    </p>
-
-    <!-- Countdown -->
-    <p id="countdown" class="text-sm text-red-500 mb-4">Kesempatan ini akan berakhir dalam 15 detik...</p>
-
-    <!-- Tombol Ambil -->
-    <div class="relative inline-block">
-      <a id="ambilBtn" href="https://link.dana.id/danakaget?c=sdxhgl49j&r=ktVWBv&orderId=20250507101214375515010300166273722181010"
-         class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-full block relative z-0">
-        Ambil Sekarang
-      </a>
-    </div>
-
-    <!-- Catatan -->
-    <p class="text-xs text-gray-400 mt-4">*Terbatas untuk yang cepat!</p>
-
-    <!-- Suara -->
-    <audio id="clickSound" src="https://www.soundjay.com/button/sounds/button-16.mp3" preload="auto"></audio>
-    <audio id="dingSound" src="https://www.soundjay.com/button/sounds/button-3.mp3" preload="auto"></audio>
+    <p class="mt-6 text-sm text-gray-400">*Link hanya berlaku dalam waktu terbatas.</p>
   </div>
-
-  <script>
-    const countdown = document.getElementById("countdown");
-    const notice = document.getElementById("notice");
-    const clickSound = document.getElementById("clickSound");
-    const dingSound = document.getElementById("dingSound");
-
-    let timeLeft = 15;
-    const timer = setInterval(() => {
-      timeLeft--;
-      countdown.textContent = `Kesempatan ini akan berakhir dalam ${timeLeft} detik...`;
-      if (timeLeft <= 0) {
-        countdown.textContent = "Kesempatan telah berakhir.";
-        dingSound.play();
-        clearInterval(timer);
-      }
-    }, 1000);
-  </script>
 </body>
 </html>
-
