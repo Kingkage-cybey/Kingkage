@@ -8,81 +8,29 @@
 </head>
 <body class="bg-gray-100 flex justify-center items-center min-h-screen">
   <div class="bg-white p-6 rounded-xl shadow-md text-center max-w-md w-full relative">
-    
-    <!-- Iklan Slot Pertama + Popunder -->
-    <div class="mb-4">
-      <!-- Popunder Script -->
-      <script type='text/javascript' src='//pl26530736.profitableratecpm.com/2c/28/90/2c28904f79ba9d63ab075c14dfb0dd2b.js'></script>
-      
-      <!-- Display Banner -->
-      <script type="text/javascript">
-        atOptions = {
-          'key': 'fb95e1d3ac3a69e4e254d0de2833ae53',
-          'format': 'iframe',
-          'height': 60,
-          'width': 320,
-          'params': {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
-    </div>
 
     <!-- Judul -->
     <h1 class="text-2xl font-bold text-green-600 mb-2">DANA KAGET!</h1>
     <p class="mb-2">Klik tombol di bawah untuk klaim Dana Kaget:</p>
 
-    <!-- Notifikasi Tekan -->
+    <!-- Notifikasi -->
     <p id="notice" class="text-sm text-blue-600 font-semibold mb-2 animate-bounce">
-      Tekan div iklan untuk menghilangkan iklan!
+      Kesempatan terbatas, klaim sekarang juga!
     </p>
 
     <!-- Countdown -->
-    <p id="countdown" class="text-sm text-red-500 mb-4">Iklan akan hilang dalam 60 detik...</p>
+    <p id="countdown" class="text-sm text-red-500 mb-4">Kesempatan ini akan berakhir dalam 15 detik...</p>
 
-    <!-- Tombol dan Iklan Overlay -->
+    <!-- Tombol Ambil -->
     <div class="relative inline-block">
-      <!-- Tombol Ambil -->
       <a id="ambilBtn" href="https://link.dana.id/danakaget?c=sdxhgl49j&r=ktVWBv&orderId=20250507101214375515010300166273722181010"
          class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-full block relative z-0">
         Ambil Sekarang
       </a>
-
-      <!-- Overlay Iklan -->
-      <div id="iklanContainer" class="absolute inset-0 z-20">
-        <!-- Lapisan transparan yang menangkap klik -->
-        <div id="clickLayer" class="absolute inset-0 z-30 cursor-pointer"></div>
-
-        <!-- Iklan -->
-        <div class="relative z-10">
-          <script type="text/javascript">
-            atOptions = {
-              'key': 'fb95e1d3ac3a69e4e254d0de2833ae53',
-              'format': 'iframe',
-              'height': 40,
-              'width': 220,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
-        </div>
-      </div>
     </div>
 
     <!-- Catatan -->
     <p class="text-xs text-gray-400 mt-4">*Terbatas untuk yang cepat!</p>
-
-    <!-- Iklan Tambahan Bawah -->
-    <div class="mt-6 text-xs text-gray-500">Jangan lewatkan penawaran ini:</div>
-    <script type="text/javascript">
-      atOptions = {
-        'key': 'fb95e1d3ac3a69e4e254d0de2833ae53',
-        'format': 'iframe',
-        'height': 250,
-        'width': 300,
-        'params': {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/fb95e1d3ac3a69e4e254d0de2833ae53/invoke.js"></script>
 
     <!-- Suara -->
     <audio id="clickSound" src="https://www.soundjay.com/button/sounds/button-16.mp3" preload="auto"></audio>
@@ -90,50 +38,22 @@
   </div>
 
   <script>
-    const iklanContainer = document.getElementById("iklanContainer");
-    const clickLayer = document.getElementById("clickLayer");
     const countdown = document.getElementById("countdown");
     const notice = document.getElementById("notice");
     const clickSound = document.getElementById("clickSound");
     const dingSound = document.getElementById("dingSound");
 
-    const now = Date.now();
-    const lastClose = localStorage.getItem("iklanClosedAt");
-
-    let showIklan = true;
-    if (lastClose && now - parseInt(lastClose) < 5000) {
-      showIklan = false;
-    }
-
-    if (!showIklan) {
-      iklanContainer.style.display = "none";
-      countdown.style.display = "none";
-      notice.style.display = "none";
-    } else {
-      let timeLeft = 15;
-      const timer = setInterval(() => {
-        timeLeft--;
-        countdown.textContent = `Iklan akan hilang dalam ${timeLeft} detik...`;
-        if (timeLeft <= 0) {
-          hideIklan();
-          dingSound.play();
-          clearInterval(timer);
-        }
-      }, 1000);
-
-      clickLayer.addEventListener("click", () => {
-        clickSound.play();
-        hideIklan();
-        localStorage.setItem("iklanClosedAt", Date.now());
+    let timeLeft = 15;
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdown.textContent = `Kesempatan ini akan berakhir dalam ${timeLeft} detik...`;
+      if (timeLeft <= 0) {
+        countdown.textContent = "Kesempatan telah berakhir.";
+        dingSound.play();
         clearInterval(timer);
-      });
-    }
-
-    function hideIklan() {
-      iklanContainer.style.display = "none";
-      countdown.style.display = "none";
-      notice.style.display = "none";
-    }
+      }
+    }, 1000);
   </script>
 </body>
 </html>
+
